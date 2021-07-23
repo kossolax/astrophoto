@@ -5,8 +5,6 @@ import struct
 
 from abc import ABC, abstractmethod
 
-
-
 class Parser(ABC):
     def __init__(self):
         pass
@@ -28,7 +26,8 @@ class ParserRAW(Parser):
 
     def read(self, path: str) -> np.array:
         with rawpy.imread(path) as raw:
-            rgb = raw.postprocess(gamma=(1, 1), no_auto_bright=False, output_bps=16, half_size=True)
+            #rgb = raw.postprocess(gamma=(2.222, 4.5), no_auto_bright=True, output_bps=8, half_size=True)
+            rgb = raw.postprocess(gamma=(1, 1), no_auto_bright=True, output_bps=16, half_size=True)
             return cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
 
 class ParserTIF(Parser, ABC):
