@@ -190,7 +190,6 @@ class ParserSony(ParserTIF):
                 if "StripOffsets" in sub_data:
                     return self.TIF_STRIP(file, sub_data)
 
-
 if __name__ == "__main__":
     img1 = ParserRAW().read("toast.ARW")
     img2 = ParserSony().read("toast.ARW")
